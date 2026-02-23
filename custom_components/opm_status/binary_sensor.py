@@ -7,14 +7,22 @@ from homeassistant.components.binary_sensor import (
 )
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
+from homeassistant.helpers.device_registry import DeviceEntryType
+from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import DOMAIN
 from .coordinator import OPMStatusCoordinator
 
-# Status types that indicate offices are open (possibly with modifications)
-OPEN_STATUSES = {"Open", "Alert"}
+DEVICE_INFO = DeviceInfo(
+    identifiers={(DOMAIN, DOMAIN)},
+    name="OPM Federal Operating Status",
+    manufacturer="U.S. Office of Personnel Management",
+    model="Operating Status API",
+    entry_type=DeviceEntryType.SERVICE,
+    configuration_url="https://www.opm.gov/policy-data-oversight/snow-dismissal-procedures/current-status/",
+)
 
 
 async def async_setup_entry(
@@ -42,14 +50,7 @@ class OPMOpenBinarySensor(
         """Initialize the binary sensor."""
         super().__init__(coordinator)
         self._attr_unique_id = f"{entry.entry_id}_open"
-        self._attr_device_info = {
-            "identifiers": {(DOMAIN, entry.entry_id)},
-            "name": "OPM Federal Operating Status",
-            "manufacturer": "U.S. Office of Personnel Management",
-            "model": "Operating Status API",
-            "entry_type": "service",
-            "configuration_url": "https://www.opm.gov/policy-data-oversight/snow-dismissal-procedures/current-status/",
-        }
+        self._attr_device_info = DEVICE_INFO
 
     @property
     def is_on(self) -> bool | None:

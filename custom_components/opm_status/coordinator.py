@@ -7,8 +7,10 @@ import re
 from typing import Any
 
 import aiohttp
+import async_timeout
 
 from homeassistant.core import HomeAssistant
+from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 
 from .const import API_URL, DOMAIN
@@ -41,17 +43,20 @@ class OPMStatusCoordinator(DataUpdateCoordinator[dict[str, Any]]):
             name=DOMAIN,
             update_interval=timedelta(minutes=scan_interval),
         )
+        self.session = async_get_clientsession(hass)
 
     async def _async_update_data(self) -> dict[str, Any]:
         """Fetch data from OPM API."""
         try:
-            async with aiohttp.ClientSession() as session:
-                async with session.get(API_URL, timeout=aiohttp.ClientTimeout(total=30)) as resp:
-                    if resp.status != 200:
-                        raise UpdateFailed(
-                            f"OPM API returned status {resp.status}"
-                        )
-                    data = await resp.json(content_type=None)
+            async with async_timeout.timeout(30):
+                resp = await self.session.get(API_URL)
+
+            if resp.status != 200:
+                raise UpdateFailed(
+                    f"OPM API returned status {resp.status}"
+                )
+
+            data = await resp.json(content_type=None)
 
             # Normalize the data
             return {
@@ -72,5 +77,7 @@ class OPMStatusCoordinator(DataUpdateCoordinator[dict[str, Any]]):
 
         except aiohttp.ClientError as err:
             raise UpdateFailed(f"Error communicating with OPM API: {err}") from err
+        except TimeoutError as err:
+            raise UpdateFailed("Timeout communicating with OPM API") from err
         except (KeyError, TypeError, ValueError) as err:
             raise UpdateFailed(f"Error parsing OPM API response: {err}") from err
