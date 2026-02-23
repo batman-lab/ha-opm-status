@@ -1,8 +1,6 @@
 # OPM Federal Operating Status - Home Assistant Integration
 
 [![HACS Custom](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/integration)
-[![Validate with HACS](https://github.com/batman-lab/ha-opm-status/actions/workflows/validate.yml/badge.svg)](https://github.com/batman-lab/ha-opm-status/actions/workflows/validate.yml)
-[![Validate with hassfest](https://github.com/batman-lab/ha-opm-status/actions/workflows/hassfest.yml/badge.svg)](https://github.com/batman-lab/ha-opm-status/actions/workflows/hassfest.yml)
 
 A Home Assistant custom integration that monitors the **U.S. Office of Personnel Management (OPM)** federal government operating status for the Washington, DC area.
 
