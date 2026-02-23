@@ -1,0 +1,12 @@
+{
+  "domain": "opm_status",
+  "name": "OPM Federal Operating Status",
+  "codeowners": [],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://www.opm.gov/developer/documentation/current-status-api/",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "",
+  "requirements": [],
+  "version": "1.0.0"
+}

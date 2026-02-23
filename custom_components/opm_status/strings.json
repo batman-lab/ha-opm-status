@@ -1,0 +1,25 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "OPM Federal Operating Status",
+        "description": "Set up the OPM Federal Government Operating Status sensor. This integration polls the official OPM API for the DC area federal operating status.",
+        "data": {
+          "scan_interval": "Update interval (minutes)"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "OPM Status is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "scan_interval": "Update interval (minutes)"
+        }
+      }
+    }
+  }
+}
