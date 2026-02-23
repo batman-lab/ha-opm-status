@@ -1,8 +1,8 @@
 # OPM Federal Operating Status - Home Assistant Integration
 
 [![HACS Custom](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/integration)
-[![Validate with HACS](https://github.com/YOUR_USERNAME/ha-opm-status/actions/workflows/validate.yml/badge.svg)](https://github.com/YOUR_USERNAME/ha-opm-status/actions/workflows/validate.yml)
-[![Validate with hassfest](https://github.com/YOUR_USERNAME/ha-opm-status/actions/workflows/hassfest.yml/badge.svg)](https://github.com/YOUR_USERNAME/ha-opm-status/actions/workflows/hassfest.yml)
+[![Validate with HACS](https://github.com/batman-lab/ha-opm-status/actions/workflows/validate.yml/badge.svg)](https://github.com/batman-lab/ha-opm-status/actions/workflows/validate.yml)
+[![Validate with hassfest](https://github.com/batman-lab/ha-opm-status/actions/workflows/hassfest.yml/badge.svg)](https://github.com/batman-lab/ha-opm-status/actions/workflows/hassfest.yml)
 
 A Home Assistant custom integration that monitors the **U.S. Office of Personnel Management (OPM)** federal government operating status for the Washington, DC area.
 
@@ -37,7 +37,7 @@ This is especially useful for federal employees, contractors, and anyone whose s
 
 Or click this button to add the repository directly:
 
-[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=YOUR_USERNAME&repository=ha-opm-status&category=integration)
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=batman-lab&repository=ha-opm-status&category=integration)
 
 ### Manual
 
